@@ -1,0 +1,37 @@
+{
+  "name": "generate-rn-component",
+  "version": "1.0.0",
+  "description": "A script to generate index.js, Component.js, ComponentContainer.js, styles.js in Component folder.",
+  "author": "Ihor Barmak <ihor.barmak@gmail.com>",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/brmk/generate-rn-component.git"
+  },
+  "keywords": [
+    "generate",
+    "react",
+    "reactjs",
+    "component",
+    "folder",
+    "reactnative",
+    "react-native",
+    "modules",
+    "structure",
+    "create"
+  ],
+  "license": "ISC",
+  "dependencies": {
+    "fs": "0.0.1-security"
+  },
+  "bugs": {
+    "url": "https://github.com/brmk/generate-rn-component/issues"
+  },
+  "homepage": "https://github.com/brmk/generate-rn-component#readme",
+  "bin": {
+    "gcls": "./index.js"
+  }
+}
