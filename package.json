@@ -1,6 +1,6 @@
 {
   "name": "generate-rn-component",
-  "version": "1.0.2",
+  "version": "1.0.5",
   "description": "A script to generate index.js, Component.js, ComponentContainer.js, styles.js in Component folder.",
   "author": "Ihor Barmak <ihor.barmak@gmail.com>",
   "main": "index.js",
