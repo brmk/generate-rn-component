@@ -72,5 +72,5 @@ components.forEach(component => {
   createFile(`${folderPrefix}styles.js`, stylesDefaultContent(componentName));
   createFile(`${folderPrefix}index.js`, indexDefaultContent(componentName));
 
-  console.log('Successfully created '+componentName+' component!');
+  console.log(`Created ${componentName}`);
 });
