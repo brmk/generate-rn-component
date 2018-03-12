@@ -1,5 +1,5 @@
 # generate-rn-component
-A script to generate index.js, Component.js, ComponentContainer.js, styles.js in Component folder for a React Native project.
+A script to generate index.js, Component.js, ComponentContainer.js, styles.js in Component folder for a React Native project. *Now supports react too*
 
 ## Installation
 
@@ -18,6 +18,11 @@ npm install -g generate-rn-component
 ```
 grnc ComponentName
 ```
+or
+```
+grnc ComponentName --react
+```
+
 
 ```
 |ComponentName
