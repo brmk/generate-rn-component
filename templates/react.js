@@ -29,7 +29,7 @@ class ${componentName}Container extends Component {
   }
 }
 
-export default ${componentName};
+export default ${componentName}Container;
 `;
 
 const index = componentName =>
