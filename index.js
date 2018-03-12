@@ -1,59 +1,14 @@
 #!/usr/bin/env node
 
 const fs = require('fs');
-const components = process.argv.slice(2);
+const minimist = require('minimist');
+const reactTemplates = require('./templates/react.js');
+const reactNativeTemplates = require('./templates/react-native.js');
 
-const componentDefaultContent = componentName =>
-`import React, { Component } from 'react';
-import {View} from 'react-native';
-import styles from './styles.js';
-const ${componentName} = (props)=>{
-  return (
-    <View>
-    </View>
-  )
-} 
-export default ${componentName};
-`;
+const argv = minimist(process.argv.slice(2));
 
-const componentContainerDefaultContent = componentName =>
-`import React, { Component } from 'react';
-import ${componentName} from './${componentName}.js';
-class ${componentName}Container extends Component {
-  constructor(props){
-    this.state = {
-
-    }
-  }
-  render() {
-    return (
-      <${componentName} {...this.props}/>
-    );
-  }
-}
-export default ${componentName};
-`;
-
-const indexDefaultContent = componentName =>
-`import ${componentName} from './${componentName}';
-import ${componentName}Container from './${componentName}Container';
-export default ${componentName}Container;
-export {${componentName}, ${componentName}Container};
-`;
-
-const stylesDefaultContent = componentName => 
-`import { StyleSheet, Dimensions } from 'react-native';
-
-const {height, width} = Dimensions.get('window');
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
-});
-
-export default styles;
-`
+const components = argv._; 
+const {react} = argv;
 
 const createFile = (fileName, contents) => fs.writeFile(fileName, contents, err => {
   if (err) {
@@ -67,10 +22,13 @@ components.forEach(component => {
 
   fs.existsSync(componentName) || fs.mkdirSync(componentName);
 
-  createFile(`${folderPrefix + componentName}.js`, componentDefaultContent(componentName));
-  createFile(`${folderPrefix + componentName}Container.js`, componentContainerDefaultContent(componentName));
-  createFile(`${folderPrefix}styles.js`, stylesDefaultContent(componentName));
-  createFile(`${folderPrefix}index.js`, indexDefaultContent(componentName));
+  let templates = react ? reactTemplates : reactNativeTemplates;
+  
+
+  createFile(`${folderPrefix + componentName}.js`, templates.component(componentName));
+  createFile(`${folderPrefix + componentName}Container.js`, templates.container(componentName));
+  !react && createFile(`${folderPrefix}styles.js`, templates.styles(componentName));
+  createFile(`${folderPrefix}index.js`, templates.index(componentName));
 
   console.log(`Created ${componentName}`);
 });
