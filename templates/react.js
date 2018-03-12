@@ -17,6 +17,7 @@ import ${componentName} from './${componentName}.js';
 
 class ${componentName}Container extends Component {
   constructor(props){
+    super(props);
     this.state = {
 
     }
