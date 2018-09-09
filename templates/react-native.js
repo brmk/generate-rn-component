@@ -1,11 +1,10 @@
 const component = componentName =>
-`import React, { Component } from 'react';
-import {View} from 'react-native';
-import styles from './styles.js';
+`import React from 'react';
+import { View } from 'react-native';
+import styles from './styles';
 const ${componentName} = (props)=>{
   return (
-    <View>
-    </View>
+    <View {...props} />
   )
 } 
 export default ${componentName};
@@ -13,14 +12,9 @@ export default ${componentName};
 
 const container = componentName =>
 `import React, { Component } from 'react';
-import ${componentName} from './${componentName}.js';
+import ${componentName} from './${componentName}';
 class ${componentName}Container extends Component {
-  constructor(props){
-    super(props);
-    this.state = {
-
-    }
-  }
+  state = {}
   render() {
     return (
       <${componentName} {...this.props}/>
@@ -38,9 +32,9 @@ export {${componentName}, ${componentName}Container};
 `;
 
 const styles = componentName => 
-`import { StyleSheet, Dimensions } from 'react-native';
+`import { StyleSheet/*, Dimensions*/ } from 'react-native';
 
-const {height, width} = Dimensions.get('window');
+// const {height, width} = Dimensions.get('window');
 
 const styles = StyleSheet.create({
   container: {
